@@ -1,16 +1,35 @@
-# React + Vite
+# La Cuponera — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA en React para **La Cuponera**, una plataforma de cupones y descuentos que conecta comercios con clientes finales. Consume la API REST del backend en Laravel ([La-cuponera-backend](https://github.com/famendezabreg/La-cuponera-backend)).
 
-Currently, two official plugins are available:
+Documentación completa de arquitectura, diagrama de base de datos y stack: ver [`ARQUITECTURA.md`](./ARQUITECTURA.md).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+- **React 19** + **Vite**
+- **Tailwind CSS v4** — estilos
+- **Zustand** — estado global (auth, carrito, tema)
+- **Axios** — cliente HTTP
+- **React Router v7** — navegación
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Vistas por rol
 
-## Expanding the ESLint configuration
+El frontend adapta la navegación según el rol del usuario autenticado (dato que viene del backend):
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Cliente** — catálogo de ofertas, carrito, compra, mis cupones, perfil
+- **Admin** — dashboard, gestión de empresas, categorías, empleados, aprobación de ofertas, vista global de cupones
+- **Company admin** — gestión de ofertas de su propia empresa
+- **Employee** — verificación y canje de cupones en punto de venta
+
+## Instalación local
+
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+
+Por defecto corre en `http://localhost:5173` y espera la API en `http://localhost:8000` (configurable en `src/services/api.js`).
+
+## Proyecto relacionado
+
+Backend en Laravel: [La-cuponera-backend](https://github.com/famendezabreg/La-cuponera-backend)
